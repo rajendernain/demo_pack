@@ -2,7 +2,7 @@ import 'package:api_projects/widgets/drawer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:lottie/lottie.dart';
 import '../bloc/profile/bloc/profile_bloc.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -38,9 +38,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
             } else if (state is ProfileLoadedState) {
 
               print('state is.........');
-              print(state.profileResponseModel.data?[0].name);
-              final profileData = state.profileResponseModel.data?[0];
+              print(state);
 
+              final profileData = state.profileResponseModel.data?[0];
               return Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Container(
@@ -57,11 +57,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Center(
+                        child: SizedBox(height:100,
+                            child: Lottie.asset('assets/Animation - 1714039509229.json')),
+                      ),
                       Row(
                         children: [
                           Text(profileData!.name.toString(),
                               style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                              color: Colors.white, fontFamily: "monospace",fontWeight: FontWeight.bold
+                              color: Colors.white, fontFamily: "poppins",
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.bold
                           )), // Adds a title to the card
                           const Spacer(),
                           Stack(
@@ -77,9 +83,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ) // Adds a stack of two circular containers to the right of the title
                         ],
                       ),
-                      Text(profileData!.emailId.toString(), style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          color: Colors.white, fontFamily: "monospace"
-                      )),
+                      Center(
+                        child: Text(profileData!.emailId.toString(),
+                            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            color: Colors.white, fontFamily: "poppins", fontSize: 20
+                        )),
+                      ),
                       const SizedBox(height: 20,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
