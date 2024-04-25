@@ -103,6 +103,18 @@ class _MyDrawerState extends State<MyDrawer> {
             const Divider(
               color: Colors.grey,
             ),
+            buildDrawerItems(
+                text: 'Profile',
+                icon: Icons.perm_contact_cal_outlined,
+                tileColor: null,
+                onTap: () {
+                  Navigator.pushNamed(
+                      context, Routes.profileRoute);
+                }
+            ),
+            const Divider(
+              color: Colors.grey,
+            ),
             BlocListener<LogoutBloc, LogoutState>(
               listener: (context, state) {
                if(state is LogOutState){

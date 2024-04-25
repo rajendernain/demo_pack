@@ -2,12 +2,14 @@ import 'package:api_projects/bloc/employee/bloc/employee_list_bloc.dart';
 import 'package:api_projects/bloc/login_bloc.dart' as login_bloc;
 import 'package:api_projects/bloc/logout_bloc.dart';
 import 'package:api_projects/bloc/products_bloc.dart';
+import 'package:api_projects/bloc/profile/bloc/profile_bloc.dart';
 import 'package:api_projects/repo/employee_repo.dart';
 import 'package:api_projects/repo/login_repo.dart';
 import 'package:api_projects/repo/products_repo.dart';
 import 'package:api_projects/screens/home_screen.dart';
 import 'package:api_projects/screens/login_screen.dart';
 import 'package:api_projects/screens/product_screen.dart';
+import 'package:api_projects/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -66,6 +68,7 @@ class _MyAppState extends State<MyApp> {
               BlocProvider(create: (context) => LogoutBloc()),
               BlocProvider(create: (context) => EmployeeListBloc(EmployeeListRepo())),
               BlocProvider(create: (context) => login_bloc.LoginBloc(login_bloc.PageLoading())),
+              BlocProvider(create: (context) => ProfileBloc(EmployeeListRepo())),
             ],
             child: MaterialApp(
               title: 'Flutter Demo',
@@ -74,9 +77,10 @@ class _MyAppState extends State<MyApp> {
               initialRoute: isAuthenticated ? Routes.homeRoute : Routes.loginRoute,
               navigatorKey: MyApp.navigatorKey,
               routes: <String, WidgetBuilder>{
-                Routes.loginRoute: (context) => LoginScreen(),
-                Routes.homeRoute: (context) => HomeScreen(),
-                Routes.productRoute: (context) => ProductScreen(),
+                Routes.loginRoute: (context) => const LoginScreen(),
+                Routes.homeRoute: (context) => const HomeScreen(),
+                Routes.productRoute: (context) => const ProductScreen(),
+                Routes.profileRoute: (context) => const ProfileScreen(),
               },
             ),
           );

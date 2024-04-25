@@ -20,9 +20,6 @@ class EmployeeListBloc extends Bloc<EmployeeListEvent, EmployeeListState> {
 
       if(empData.status == 'success'){
         emit(EmployeeLoadedState(empData, message!));
-        print('.....employee Success ...Bloc.....');
-        print(message);
-        print(empData.data);
       }else {
         emit(EmployeeErrorState(message!));
       }
