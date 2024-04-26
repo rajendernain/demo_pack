@@ -30,6 +30,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  app_bar_status:
+    path: app_bar_status
 
 
   # The following adds the Cupertino Icons font to your application.

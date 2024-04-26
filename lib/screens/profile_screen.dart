@@ -1,4 +1,5 @@
 import 'package:api_projects/widgets/drawer.dart';
+import 'package:app_bar_status/app_bar_status.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,6 +22,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
     _employeeProfileBloc.add(const LoadEmpProfileEvent());
     super.initState();
   }
+
+  int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,6 +70,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+
+
+                      CustomButton(
+                          onPressed: _incrementCounter,
+                          key: null,
+                          child: const Text("Click me")
+                      ),
+                      
+                      Text(_counter.toString()),
+
                       // Center(
                       //   child: SizedBox(height:100,
                       //       //child: Lottie.asset('assets/Animation - 1714039509229.json')),
