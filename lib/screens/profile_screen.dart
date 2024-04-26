@@ -34,7 +34,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
         },
         builder: (context, state) {
             if (state is ProfileLoadingState) {
-            return const Center(child: CircularProgressIndicator.adaptive(backgroundColor: Colors.orange,));
+            //return const Center(child: CircularProgressIndicator.adaptive(backgroundColor: Colors.orange,));
+            return Center(child: SizedBox(
+              height: 150,
+                child: Lottie.asset('assets/loading.json')));
             } else if (state is ProfileLoadedState) {
 
               print('state is.........');
@@ -57,10 +60,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Center(
-                        child: SizedBox(height:100,
-                            child: Lottie.asset('assets/Animation - 1714039509229.json')),
-                      ),
+                      // Center(
+                      //   child: SizedBox(height:100,
+                      //       //child: Lottie.asset('assets/Animation - 1714039509229.json')),
+                      //       child: Lottie.asset('assets/Animation - 1714040593694.json')),
+                      // ),
                       Row(
                         children: [
                           Text(profileData!.name.toString(),
@@ -70,17 +74,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   fontWeight: FontWeight.bold
                           )), // Adds a title to the card
                           const Spacer(),
-                          Stack(
-                            children: List.generate(
-                              2,
-                                  (index) => Container(
-                                margin: EdgeInsets.only(left: (15 * index).toDouble()),
-                                height: 30,
-                                width: 30,
-                                decoration: BoxDecoration(borderRadius: BorderRadius.circular(100), color: Colors.white54),
-                              ),
-                            ),
-                          ) // Adds a stack of two circular containers to the right of the title
+                          SizedBox(height:100,child: Lottie.asset('assets/Animation - 1714040593694.json')),
+                          // Stack(
+                          //   children: List.generate(
+                          //     2,
+                          //         (index) => Container(
+                          //       margin: EdgeInsets.only(left: (15 * index).toDouble()),
+                          //       height: 30,
+                          //       width: 30,
+                          //       decoration: BoxDecoration(borderRadius: BorderRadius.circular(100), color: Colors.white54),
+                          //     ),
+                          //   ),
+                          // ) // Adds a stack of two circular containers to the right of the title
                         ],
                       ),
                       Center(
